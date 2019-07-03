@@ -1,6 +1,92 @@
-$pimary-color: #444;
+$primary-color: #444;
+$secondary-color: #eece1a;
+$show-home-image: true;
+$home-image: url();
+
+@mixin easeOut {
+    transition: all 0.5s ease-out;
+}
+
+*{
+    box-sizing: border-box;
+}
 
 body{
-    background: $pimary-color;
+    background: $primary-color;
     color: #fff;
+    height: 100%;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.5;
 }
+
+// headings
+h1,
+ h2,
+  h3 {
+    margin: 0;
+    font-weight: 500;
+
+    // nesting .......lg-heading is my name
+    &.lg-heading {
+        font-size: 4rem; 
+    }
+    // sm-heading is aspiring software dev and web designer
+    &.sm-heading{
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        // this is the shading behind the writing   also note that the rgba wrap is so that when a background image is set the opacity will allow us to see it 
+        background: rgba (lighten ($primary-color, 2), 0.5);
+
+    }
+
+}
+//  this part is for the links 
+a{
+    color: #fff;
+    // text decor takes away the under line from the links 
+    text-decoration: none;
+
+}
+
+header {
+    position: fixed;
+    // z index is how close an element is to the front
+    z-index: 2;
+    width: 100%;
+
+
+}
+// surname!!
+.text-secondary {
+    color: $secondary-color;
+}
+
+main {
+    padding: 4rem;
+    height: 100%;
+
+    .icons {
+        margin-top: 1rem;
+         
+        a{
+            padding: 0.4rem;
+// when hovering over the icons the fade is produced ease-out
+            &:hover {
+                color: $secondary-color;
+                // this transition is going to be used for many things using a mixin
+                // transition: all 0.8 s ease-out;
+                @include easeOut();
+
+            }
+        }
+    }
+
+    &#home {
+        overflow: hidden;
+        h1 {
+            margin-top: 20vh;
+        }
+    }
+}
+
